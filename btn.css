@@ -1,0 +1,31 @@
+.applyCss {
+    margin-bottom: 40px;
+}
+
+li {
+    margin-top: 10px;
+    padding: 31px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+a {
+    padding: 14px;
+    border: 2px solid black;
+    text-decoration: none !important;
+    color: black !important;
+    background-color: rgba(255, 166, 0, 0.627) !important;
+    transition: all 0.7s;
+    color: black !important;
+}
+
+a:hover {
+    color: black !important;
+    font-size: 20px !important;
+    padding: 30px !important;
+    font-weight: bold !important;
+}
+
+.sub-div {
+    list-style-type: none;
+}

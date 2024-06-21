@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            /* Custom background color for the main page */
+        }
+        
+        .form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Optional: Adds a subtle shadow */
+            width: 80%;
+            /* Adjust the width of the form */
+            max-width: 400px;
+            /* Maximum width of the form */
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            /* Align items vertically */
+        }
+        
+        label {
+            margin-right: 7px;
+            /* Add space between label and input */
+            margin-bottom: 8px;
+            font-weight: bold;
+            min-width: 100px;
+            /* Minimum width for labels */
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"] {
+            flex: 1;
+            /* Expand input to take remaining space */
+            padding: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+            /* Ensures padding doesn't increase width */
+            opacity: 0.4;
+        }
+        
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: darkblue;
+            /* Darker shade on hover */
+        }
+        
+        .title {
+            padding: 5px;
+        }
+        
+        .heading {
+            text-align: center;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="form">
+            <div class="title">
+                <h1 class="heading">Registration Form</h1>
+            </div>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob">
+            </div>
+            <div class="form-group">
+                <label for="email">Mail id</label>
+                <input type="email" id="email" name="email" placeholder="Enter Email Address" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Re-Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

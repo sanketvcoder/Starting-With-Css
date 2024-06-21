@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Page</title>
+    <link rel="stylesheet" href="btn.css">
+    <link rel="stylesheet" href="style.css" id="externalCss" disabled>
+    <style id="internalCss" disabled>
+        .applyCss {
+            color: green;
+            margin-bottom: 4pc;
+        }
+    </style>
+    <style>
+        .sub-div {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="applyCss" id="content">
+        <p>There are three basic ways to add CSS</p>
+        <ol>
+            <li>inline css</li>
+            <div id="inlineSubDiv" class="sub-div">
+                <li>Inline CSS</li>
+                <p>Inline CSS is used to apply a unique style to a single HTML element. It uses the <code>style</code> attribute of the HTML element.</p>
+            </div>
+            <li>internal css</li>
+            <div id="internalSubDiv" class="sub-div">
+                <li>Internal CSS</li>
+                <p>Internal CSS is used to define styles in the head section of an HTML page, within a <code>&lt;style&gt;</code> tag. This is useful when a single document has a unique style.</p>
+            </div>
+            <li>external css</li>
+            <div id="externalSubDiv" class="sub-div">
+                <li>External CSS</li>
+                <p>External CSS is used to define styles for multiple HTML pages. With an external stylesheet, you can change the look of an entire website by changing just one file.</p>
+            </div>
+        </ol>
+    </div>
+    <a href="#" id="Inline">Apply Inline css</a>
+    <a href="#" id="Internal">Apply Internal css</a>
+    <a href="#" id="External">Apply External css</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inlineBtn = document.querySelector('#Inline');
+            const internalBtn = document.querySelector('#Internal');
+            const externalBtn = document.querySelector('#External');
+            const contentDiv = document.querySelector('#content');
+
+            const inlineSubDiv = document.querySelector('#inlineSubDiv');
+            const internalSubDiv = document.querySelector('#internalSubDiv');
+            const externalSubDiv = document.querySelector('#externalSubDiv');
+
+            // Function to hide all sub-divs
+            function hideAllSubDivs() {
+                inlineSubDiv.style.display = 'none';
+                internalSubDiv.style.display = 'none';
+                externalSubDiv.style.display = 'none';
+            }
+
+            // Function to apply Inline CSS and show sub-div
+            function applyInlineCss() {
+                document.querySelector('#internalCss').disabled = true;
+                document.querySelector('#externalCss').disabled = true;
+                contentDiv.style.color = 'red';
+                hideAllSubDivs();
+                inlineSubDiv.style.display = 'block';
+            }
+
+            // Function to apply Internal CSS and show sub-div
+            function applyInternalCss() {
+                contentDiv.removeAttribute('style');
+                document.querySelector('#internalCss').disabled = false;
+                document.querySelector('#externalCss').disabled = true;
+                hideAllSubDivs();
+                internalSubDiv.style.display = 'block';
+            }
+
+            // Function to apply External CSS and show sub-div
+            function applyExternalCss() {
+                contentDiv.removeAttribute('style');
+                document.querySelector('#internalCss').disabled = true;
+                document.querySelector('#externalCss').disabled = false;
+                hideAllSubDivs();
+                externalSubDiv.style.display = 'block';
+            }
+
+            // Event listeners for buttons
+            inlineBtn.addEventListener('click', applyInlineCss);
+            internalBtn.addEventListener('click', applyInternalCss);
+            externalBtn.addEventListener('click', applyExternalCss);
+        });
+    </script>
+</body>
+
+</html>

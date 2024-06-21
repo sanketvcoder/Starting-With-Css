@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting with CSS</title>
+    <style>
+        /* style.css */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        pre {
+            width: 100%;
+            /* Adjusted to 100% inside .container */
+            margin: 0;
+            /* Reset margin to 0 */
+        }
+        
+        li {
+            padding: 31px;
+            list-style-type: none;
+            margin-bottom: 10px;
+        }
+        
+        pre {
+            overflow-x: auto;
+            overflow-y: auto;
+            height: 70vh;
+            /* Enable horizontal scroll */
+            max-width: 100%;
+            /* Ensure it doesn't overflow its container */
+        }
+        
+        .code {
+            font-weight: bold;
+            text-decoration: uppercase;
+            font-size: 30px;
+        }
+        
+        code {
+            display: block;
+            /* Ensure code is treated as a block element */
+            white-space: pre;
+            /* Preserve formatting */
+        }
+        /* Responsive Styles */
+        
+        @media only screen and (max-width: 768px) {
+            /* Styles for screens smaller than 768px */
+            .container {
+                margin: 0;
+                width: 100%;
+                /* Adjust based on image section width */
+            }
+            .container2 {
+                flex-direction: column;
+            }
+            .content-section {
+                /* Other styles */
+                min-height: 50vh;
+                /* Adjust the value based on your needs */
+                overflow-y: auto;
+            }
+            * {
+                font-size: 16px;
+                /* Base font size */
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .container {
+                width: 100%;
+            }
+            .image-section {
+                max-width: 100%;
+                /* Scale down on small screens */
+                width: 179px;
+                /* Adjust for your image size */
+                /* ... other styles */
+            }
+            .content-section {
+                width: 100%;
+                display: flex;
+                /* Or grid if needed */
+                flex-direction: column;
+                justify-content: space-between;
+                /* Align content vertically */
+                padding: 20px;
+                overflow-y: auto;
+                /* Enable scroll if content overflows */
+                /* ... other styles */
+            }
+            /* Responsive Styles (Example for smaller screens) */
+        }
+        
+        @media only screen and (max-width: 400px) {
+            /* Styles for screens smaller than 768px */
+            .container2 {
+                flex-direction: column;
+                position: relative;
+            }
+            .content-section {
+                /* Other styles */
+                min-height: 50vh;
+                /* Adjust the value based on your needs */
+                overflow-y: auto;
+            }
+            * {
+                font-size: 14px;
+                /* Base font size */
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .container {
+                width: 118%;
+            }
+            .image-section {
+                position: absolute;
+                max-width: 100%;
+                /* Scale down on small screens */
+                width: 154px;
+                top: 123px;
+                text-align: center;
+                /* Adjust for your image size */
+                /* ... other styles */
+            }
+            .content-section {
+                width: 100%;
+                display: flex;
+                /* Or grid if needed */
+                flex-direction: column;
+                justify-content: space-between;
+                /* Align content vertically */
+                padding: 20px;
+                overflow-y: auto;
+                /* Enable scroll if content overflows */
+                /* ... other styles */
+            }
+            /* Responsive Styles (Example for smaller screens) */
+        }
+        
+        @media only screen and (max-width: 830px) {
+            /* Styles for screens smaller than 768px */
+            * {
+                font-size: 20px;
+                /* Base font size */
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            .container2 {
+                flex-direction: column;
+                position: relative;
+            }
+            .content-section {
+                /* Other styles */
+                min-height: 50vh;
+                /* Adjust the value based on your needs */
+                overflow-y: auto;
+            }
+            .container {
+                width: 118%;
+            }
+            .image-section {
+                position: absolute;
+                max-width: 100%;
+                /* Scale down on small screens */
+                width: 154px;
+                top: 123px;
+                text-align: center;
+                /* Adjust for your image size */
+                /* ... other styles */
+            }
+            .content-section {
+                width: 100%;
+                display: flex;
+                /* Or grid if needed */
+                flex-direction: column;
+                justify-content: space-between;
+                /* Align content vertically */
+                padding: 20px;
+                overflow-y: auto;
+                /* Enable scroll if content overflows */
+                /* ... other styles */
+            }
+            /* Responsive Styles (Example for smaller screens) */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <li style="height: 109vh; width: 100%;">
+            <style>
+                body {
+                    font-family: sans-serif;
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                .container2 {
+                    position: relative;
+                    display: flex;
+                    width: 100%;
+                    min-height: 100vh;
+                    /* Ensure container at least full viewport height */
+                }
+                
+                .image-section {
+                    z-index: 1;
+                    position: absolute;
+                    width: 179px;
+                    right: 0;
+                    top: 172px;
+                }
+                
+                .image-section img {
+                    max-width: 45%;
+                    /* Ensure image doesn't overflow */
+                    max-height: 50%;
+                    /* Ensure image doesn't overflow */
+                    border-radius: 50%;
+                }
+                
+                .content-section {
+                    position: absolute;
+                    width: 100%;
+                    flex: 1;
+                    background-color: #fff;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    overflow-y: auto;
+                    /* Add scroll if content overflows vertically */
+                }
+                
+                header {
+                    background-color: #ddd;
+                    padding: 20px;
+                    text-align: center;
+                }
+                
+                h1,
+                h2 {
+                    margin: 0;
+                    padding: 10px;
+                }
+                
+                section {
+                    margin-bottom: 20px;
+                    border-radius: 5px;
+                }
+                
+                .personal-details,
+                .course-details,
+                .assignment-details {
+                    padding: 20px;
+                    border: 1px solid #ddd;
+                }
+            </style>
+
+            <div class="container2">
+                <div class="image-section">
+                    <img src="prfile.jpg" alt="Your Profile Picture">
+                </div>
+                <div class="content-section">
+                    <header>
+                        <h1>Personal Details</h1>
+                    </header>
+                    <section class="personal-details">
+                        <h2>Name</h2>
+                        <p>Sanket Kumar Verma</p>
+                        <h2>Registered E-Mail</h2>
+                        <p>sanketv403@gmail.com</p>
+                    </section>
+                    <section class="course-details">
+                        <h2>Course Details</h2>
+                        <p>Course Name: Full Stack Development</p>
+                        <p>Batch: April 2024</p>
+                    </section>
+                    <section class="assignment-details">
+                        <h2>Assignment Details</h2>
+                        <p>Assignment Name: Staring with CSS</p>
+                        <p>Module Number: 18</p>
+                    </section>
+                </div>
+            </div>
+        </li>
+
+        <li style="text-align: center; font-weight: bold; font-size: 40px;">Getting started with CSS</li>
+        <ul>
+            <div class="project">
+                <li class="project__heading">
+                    <b>Q1.</b> Create a simple page with some div tags and show different ways to add CSS as well as what happens when you target the same elements with inline, internal, and external CSS. Also, utilize comments in the project where required.
+                </li>
+                <li class="project__looks">
+                    <!DOCTYPE html>
+                    <html lang="en">
+
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Simple Web Page</title>
+                        <link rel="stylesheet" href="btn.css">
+                        <link rel="stylesheet" href="style.css" id="externalCss" disabled>
+                        <style id="internalCss" disabled>
+                            .applyCss {
+                                color: green;
+                                margin-bottom: 4pc;
+                            }
+                        </style>
+                        <style>
+                            .sub-div {
+                                display: none;
+                                margin-top: 10px;
+                                padding: 10px;
+                                border: 1px solid #ccc;
+                                background-color: #f9f9f9;
+                            }
+                        </style>
+                    </head>
+
+                    <body>
+                        <div class="applyCss" id="content">
+                            <p>There are three basic ways to add CSS</p>
+                            <ol>
+                                <li>inline css</li>
+                                <div id="inlineSubDiv" class="sub-div">
+                                    <li>Inline CSS</li>
+                                    <p>Inline CSS is used to apply a unique style to a single HTML element. It uses the <code>style</code> attribute of the HTML element.</p>
+                                </div>
+                                <li>internal css</li>
+                                <div id="internalSubDiv" class="sub-div">
+                                    <li>Internal CSS</li>
+                                    <p>Internal CSS is used to define styles in the head section of an HTML page, within a <code>&lt;style&gt;</code> tag. This is useful when a single document has a unique style.</p>
+                                </div>
+                                <li>external css</li>
+                                <div id="externalSubDiv" class="sub-div">
+                                    <li>External CSS</li>
+                                    <p>External CSS is used to define styles for multiple HTML pages. With an external stylesheet, you can change the look of an entire website by changing just one file.</p>
+                                </div>
+                            </ol>
+                        </div>
+                        <a href="#" id="Inline">Apply Inline css</a>
+                        <a href="#" id="Internal">Apply Internal css</a>
+                        <a href="#" id="External">Apply External css</a>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const inlineBtn = document.querySelector('#Inline');
+                                const internalBtn = document.querySelector('#Internal');
+                                const externalBtn = document.querySelector('#External');
+                                const contentDiv = document.querySelector('#content');
+
+                                const inlineSubDiv = document.querySelector('#inlineSubDiv');
+                                const internalSubDiv = document.querySelector('#internalSubDiv');
+                                const externalSubDiv = document.querySelector('#externalSubDiv');
+
+                                // Function to hide all sub-divs
+                                function hideAllSubDivs() {
+                                    inlineSubDiv.style.display = 'none';
+                                    internalSubDiv.style.display = 'none';
+                                    externalSubDiv.style.display = 'none';
+                                }
+
+                                // Function to apply Inline CSS and show sub-div
+                                function applyInlineCss() {
+                                    document.querySelector('#internalCss').disabled = true;
+                                    document.querySelector('#externalCss').disabled = true;
+                                    contentDiv.style.color = 'red';
+                                    hideAllSubDivs();
+                                    inlineSubDiv.style.display = 'block';
+                                }
+
+                                // Function to apply Internal CSS and show sub-div
+                                function applyInternalCss() {
+                                    contentDiv.removeAttribute('style');
+                                    document.querySelector('#internalCss').disabled = false;
+                                    document.querySelector('#externalCss').disabled = true;
+                                    hideAllSubDivs();
+                                    internalSubDiv.style.display = 'block';
+                                }
+
+                                // Function to apply External CSS and show sub-div
+                                function applyExternalCss() {
+                                    contentDiv.removeAttribute('style');
+                                    document.querySelector('#internalCss').disabled = true;
+                                    document.querySelector('#externalCss').disabled = false;
+                                    hideAllSubDivs();
+                                    externalSubDiv.style.display = 'block';
+                                }
+
+                                // Event listeners for buttons
+                                inlineBtn.addEventListener('click', applyInlineCss);
+                                internalBtn.addEventListener('click', applyInternalCss);
+                                externalBtn.addEventListener('click', applyExternalCss);
+                            });
+                        </script>
+                    </body>
+
+                    </html>
+                </li>
+
+                <li><pre><code class="language-html">
+                        <li class="code">CODE</li>
+                        &lt;!DOCTYPE html&gt;
+                        &lt;html lang=&quot;en&quot;&gt;
+                        
+                        &lt;head&gt;
+                            &lt;meta charset=&quot;UTF-8&quot;&gt;
+                            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+                            &lt;title&gt;Simple Web Page&lt;/title&gt;
+                            &lt;link rel=&quot;stylesheet&quot; href=&quot;btn.css&quot;&gt;
+                            &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; id=&quot;externalCss&quot; disabled&gt;
+                            &lt;style id=&quot;internalCss&quot; disabled&gt; 
+                            &lt;! -- Internal css --&gt;
+                            &lt;style&gt;
+                                .applyCss {
+                                    color: green;
+                                    margin-bottom: 4pc;
+                                }
+                            &lt;/style&gt;
+                            &lt;style&gt;
+                                .sub-div {
+                                    display: none;
+                                    margin-top: 10px;
+                                    padding: 10px;
+                                    border: 1px solid #ccc;
+                                    background-color: #f9f9f9;
+                                }
+                            &lt;/style&gt;
+                        &lt;/head&gt;
+                        
+                        &lt;body&gt;
+                            &lt;div class=&quot;applyCss&quot; id=&quot;content&quot;&gt;
+                                &lt;p&gt;There are three basic ways to add CSS&lt;/p&gt;
+                                &lt;ol&gt;
+                                    &lt;li&gt;inline css&lt;/li&gt;
+                                    &lt;div id=&quot;inlineSubDiv&quot; class=&quot;sub-div&quot;&gt;
+                                        &lt;li&gt;Inline CSS&lt;/li&gt;
+                                        &lt;p&gt;Inline CSS is used to apply a unique style to a single HTML element. It uses the &lt;code&gt;style&lt;/code&gt; attribute of the HTML element.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                    &lt;li&gt;internal css&lt;/li&gt;
+                                    &lt;div id=&quot;internalSubDiv&quot; class=&quot;sub-div&quot;&gt;
+                                        &lt;li&gt;Internal CSS&lt;/li&gt;
+                                        &lt;p&gt;Internal CSS is used to define styles in the head section of an HTML page, within a &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; tag. This is useful when a single document has a unique style.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                    &lt;li&gt;external css&lt;/li&gt;
+                                    &lt;div id=&quot;externalSubDiv&quot; class=&quot;sub-div&quot;&gt;
+                                        &lt;li&gt;External CSS&lt;/li&gt;
+                                        &lt;p&gt;External CSS is used to define styles for multiple HTML pages. With an external stylesheet, you can change the look of an entire website by changing just one file.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/ol&gt;
+                            &lt;/div&gt;
+                            &lt;a href=&quot;#&quot; id=&quot;Inline&quot;&gt;Apply Inline css&lt;/a&gt;
+                            &lt;a href=&quot;#&quot; id=&quot;Internal&quot;&gt;Apply Internal css&lt;/a&gt;
+                            &lt;a href=&quot;#&quot; id=&quot;External&quot;&gt;Apply External css&lt;/a&gt;
+                        
+                            &lt;script&gt;
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const inlineBtn = document.querySelector('#Inline');
+                                    const internalBtn = document.querySelector('#Internal');
+                                    const externalBtn = document.querySelector('#External');
+                                    const contentDiv = document.querySelector('#content');
+                        
+                                    const inlineSubDiv = document.querySelector('#inlineSubDiv');
+                                    const internalSubDiv = document.querySelector('#internalSubDiv');
+                                    const externalSubDiv = document.querySelector('#externalSubDiv');
+                        
+                                    // Function to hide all sub-divs
+                                    function hideAllSubDivs() {
+                                        inlineSubDiv.style.display = 'none';
+                                        internalSubDiv.style.display = 'none';
+                                        externalSubDiv.style.display = 'none';
+                                    }
+                        
+                                    // Function to apply Inline CSS and show sub-div
+                                    function applyInlineCss() {
+                                        document.querySelector('#internalCss').disabled = true;
+                                        document.querySelector('#externalCss').disabled = true;
+                                        contentDiv.style.color = 'red';
+                                        hideAllSubDivs();
+                                        inlineSubDiv.style.display = 'block';
+                                    }
+                        
+                                    // Function to apply Internal CSS and show sub-div
+                                    function applyInternalCss() {
+                                        contentDiv.removeAttribute('style');
+                                        document.querySelector('#internalCss').disabled = false;
+                                        document.querySelector('#externalCss').disabled = true;
+                                        hideAllSubDivs();
+                                        internalSubDiv.style.display = 'block';
+                                    }
+                        
+                                    // Function to apply External CSS and show sub-div
+                                    function applyExternalCss() {
+                                        contentDiv.removeAttribute('style');
+                                        document.querySelector('#internalCss').disabled = true;
+                                        document.querySelector('#externalCss').disabled = false;
+                                        hideAllSubDivs();
+                                        externalSubDiv.style.display = 'block';
+                                    }
+                        
+                                    // Event listeners for buttons
+                                    inlineBtn.addEventListener('click', applyInlineCss);
+                                    internalBtn.addEventListener('click', applyInternalCss);
+                                    externalBtn.addEventListener('click', applyExternalCss);
+                                });
+                            &lt;/script&gt;
+                        &lt;/body&gt;
+                        
+                        &lt;/html&gt;
+                            </code></pre></li>
+
+            </div>
+        </ul>
+
+
+        <ul>
+            <li class="project__heading">
+                <b>Q2.</b> Build an HTML page with multiple paragraphs, each assigned a unique class name. Write CSS rules using class selectors to apply distinct styling to each paragraph. Follow the BEM naming convention and explain how you've named
+                the classes .
+            </li>
+            <li class="project__looks">
+                <!DOCTYPE html>
+                <html lang="en">
+
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>BEM Naming Convention Example</title>
+                    <style>
+                        /* Global styles or resets can go here */
+                        
+                        body {
+                            font-family: Arial, sans-serif;
+                            line-height: 1.6;
+                            margin: 20px;
+                        }
+                        /* BEM naming convention */
+                        
+                        .paragraph {
+                            margin-bottom: 20px;
+                            /* Block level style */
+                            padding: 10px;
+                            /* Block level style */
+                            background-color: #f0f0f0;
+                            /* Block level style */
+                            transition: all 0.2s ease-in;
+                        }
+                        
+                        .paragraph__intro {
+                            font-size: 24px;
+                            /* Element level style */
+                            font-weight: bold;
+                            /* Element level style */
+                        }
+                        
+                        .paragraph:hover {
+                            background-color: lightblue;
+                            /* Modifier style */
+                            border: 2px solid blue;
+                            /* Modifier style */
+                        }
+                        
+                        .paragraph--emphasized {
+                            font-style: italic;
+                            /* Modifier style */
+                        }
+                        
+                        .paragraph__detail {
+                            color: #666;
+                            /* Element level style */
+                        }
+                        
+                        .paragraph--important .paragraph__detail {
+                            color: red;
+                            /* Modifier affecting an element */
+                            font-weight: bold;
+                            /* Modifier affecting an element */
+                        }
+                    </style>
+                </head>
+
+                <body>
+                    <div class="paragraph paragraph--highlighted">
+                        <p class="paragraph__intro">Introduction</p>
+                        <p class="paragraph__detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+
+                    <div class="paragraph paragraph--emphasized">
+                        <p class="paragraph__intro">Emphasized Section</p>
+                        <p class="paragraph__detail">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+
+                    <div class="paragraph paragraph--important">
+                        <p class="paragraph__intro">Important Note</p>
+                        <p class="paragraph__detail">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                    </div>
+
+                    <div class="paragraph">
+                        <p class="paragraph__intro">Conclusion</p>
+                        <p class="paragraph__detail">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    </div>
+                </body>
+
+                </html>
+            </li>
+
+            <li><pre><code class="language-html">
+                <li class="code">CODE</li>
+                &lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;BEM Naming Convention Example&lt;/title&gt;
+    &lt;style&gt;
+        /* Global styles or resets can go here */
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        /* BEM naming convention */
+        
+        .paragraph {
+            margin-bottom: 20px;
+            /* Block level style */
+            padding: 10px;
+            /* Block level style */
+            background-color: #f0f0f0;
+            /* Block level style */
+            transition: all 0.2s ease-in;
+        }
+        
+        .paragraph__intro {
+            font-size: 24px;
+            /* Element level style */
+            font-weight: bold;
+            /* Element level style */
+        }
+        
+        .paragraph:hover {
+            background-color: lightblue;
+            /* Modifier style */
+            border: 2px solid blue;
+            /* Modifier style */
+        }
+        
+        .paragraph--emphasized {
+            font-style: italic;
+            /* Modifier style */
+        }
+        
+        .paragraph__detail {
+            color: #666;
+            /* Element level style */
+        }
+        
+        .paragraph--important .paragraph__detail {
+            color: red;
+            /* Modifier affecting an element */
+            font-weight: bold;
+            /* Modifier affecting an element */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;paragraph paragraph--highlighted&quot;&gt;
+        &lt;p class=&quot;paragraph__intro&quot;&gt;Introduction&lt;/p&gt;
+        &lt;p class=&quot;paragraph__detail&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;paragraph paragraph--emphasized&quot;&gt;
+        &lt;p class=&quot;paragraph__intro&quot;&gt;Emphasized Section&lt;/p&gt;
+        &lt;p class=&quot;paragraph__detail&quot;&gt;Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;paragraph paragraph--important&quot;&gt;
+        &lt;p class=&quot;paragraph__intro&quot;&gt;Important Note&lt;/p&gt;
+        &lt;p class=&quot;paragraph__detail&quot;&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;paragraph&quot;&gt;
+        &lt;p class=&quot;paragraph__intro&quot;&gt;Conclusion&lt;/p&gt;
+        &lt;p class=&quot;paragraph__detail&quot;&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+                </code></pre></li>
+
+        </ul>
+
+        <ul>
+            <li class="project__heading">
+                <b>Q3.</b> Develop an HTML form with various input elements. Use CSS to style the form, including setting background colors for input fields. Create a custom color palette for the form eleents, and de7onstrate how to apply opacity to one
+                of the for7 sections.
+            </li>
+            <li class="project__looks">
+                <!DOCTYPE html>
+                <html lang="en">
+
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>BEM Naming Convention Example</title>
+
+                    <style>
+                        .container1 {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            background-color: #f0f0f0;
+                        }
+                        
+                        .form {
+                            background-color: #fff;
+                            padding: 40px;
+                            border-radius: 8px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                            width: 80%;
+                            max-width: 400px;
+                            text-align: center;
+                            /* Center align the form contents */
+                        }
+                        
+                        .form-group {
+                            margin-bottom: 20px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            /* Align items evenly */
+                        }
+                        
+                        label {
+                            margin-right: 10px;
+                            font-weight: bold;
+                            min-width: 100px;
+                            display: inline-block;
+                            text-align: left;
+                            /* Left align label text */
+                        }
+                        
+                        input[type="text"],
+                        input[type="email"],
+                        input[type="password"],
+                        input[type="date"] {
+                            flex: 1;
+                            padding: 10px;
+                            border: 1px solid #ccc;
+                            font-size: 16px;
+                            box-sizing: border-box;
+                        }
+                        
+                        button {
+                            background-color: blue;
+                            color: white;
+                            border: none;
+                            padding: 12px 20px;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            transition: background-color 0.3s ease;
+                        }
+                        
+                        button:hover {
+                            background-color: darkblue;
+                        }
+                        
+                        .title {
+                            padding: 10px;
+                        }
+                        
+                        .heading {
+                            text-align: center;
+                            text-transform: uppercase;
+                            margin-bottom: 20px;
+                        }
+                    </style>
+                </head>
+
+                <body>
+                    <div class="container1">
+                        <form class="form">
+                            <div class="title">
+                                <h1 class="heading">Registration Form</h1>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" id="dob" name="dob">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Enter Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                            </div>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </body>
+
+                </html>
+
+            </li>
+            <li>
+                <pre><code class="language-html">
+                    <li class="code">CODE</li>
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html lang=&quot;en&quot;&gt;
+                    &lt;head&gt;
+                    &lt;meta charset=&quot;UTF-8&quot;&gt;
+                    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+                    &lt;title&gt;Form&lt;/title&gt;
+                    &lt;style&gt;
+                    body,html {
+                        margin: 0;
+                        padding: 0;
+                        height: 100%;
+                        width: 100%;
+                    }
+                    
+                    .container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        background-color: #f0f0f0;
+                    }
+                    .form {
+                        background-color: #fff;
+                        padding: 40px;
+                        border-radius: 8%;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                        width: 80%;
+                        max-width: 400px;
+                    }
+                    .form-group {
+                        margin-bottom: 20px;
+                        display: flex;
+                        align-items: center;
+                    }
+                    label {
+                        margin-right: 7px;
+                        margin-bottom: 8px;
+                        font-weight: bold;
+                        min-width: 100px;
+                    }
+                    input[type="text"],
+                    input[type="email"],
+                    input[type="password"],
+                    input[type="date"] {
+                        flex: 1;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        font-size: 16px;
+                        box-sizing: border-box;
+                        opacity: 0.4;
+                    }
+                    button {
+                        background-color: blue;
+                        color: white;
+                        border: none;
+                        padding: 12px;
+                        border-radius: 8%;
+                        cursor: pointer;
+                        font-size: 16px;
+                        transition: background-color 0.3s ease;
+                    }
+                    button:hover {
+                        background-color: darkblue;
+                    }
+                    .title {
+                        padding: 5px;
+                    }
+                    .heading {
+                        text-align: center;
+                        text-transform: uppercase;
+                    }
+                    &lt;/style&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                    &lt;form class=&quot;form&quot;&gt;
+                    
+            &lt;div class=&quot;title&quot;&gt;
+                &lt;h1 class=&quot;heading&quot;&gt;Registration Form&lt;/h1&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;firstName&quot;&gt;First Name&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;firstName&quot; name=&quot;firstName&quot; placeholder=&quot;Enter First Name&quot; required&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;lastName&quot;&gt;Last Name&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;lastName&quot; name=&quot;lastName&quot; placeholder=&quot;Enter Last Name&quot; required&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;dob&quot;&gt;Date of Birth&lt;/label&gt;
+                &lt;input type=&quot;date&quot; id=&quot;dob&quot; name=&quot;dob&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;email&quot;&gt;Mail id&lt;/label&gt;
+                &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot; placeholder=&quot;Enter Email Address&quot; required&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;password&quot;&gt;Password&lt;/label&gt;
+                &lt;input type=&quot;password&quot; id=&quot;password&quot; name=&quot;password&quot; placeholder=&quot;Enter Password&quot; required&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;confirmPassword&quot;&gt;Re-Password&lt;/label&gt;
+                &lt;input type=&quot;password&quot; id=&quot;confirmPassword&quot; name=&quot;confirmPassword&quot; placeholder=&quot;Confirm Password&quot; required&gt;
+            &lt;/div&gt;
+            &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre></li>
+        </ul>
+
+    </div>
+</body>
+
+</html>

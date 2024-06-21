@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEM Naming Convention Example</title>
+    <style>
+        /* Global styles or resets can go here */
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        /* BEM naming convention */
+        
+        .paragraph {
+            margin-bottom: 20px;
+            /* Block level style */
+            padding: 10px;
+            /* Block level style */
+            background-color: #f0f0f0;
+            /* Block level style */
+            transition: all 0.2s ease-in;
+        }
+        
+        .paragraph__intro {
+            font-size: 24px;
+            /* Element level style */
+            font-weight: bold;
+            /* Element level style */
+        }
+        
+        .paragraph:hover {
+            background-color: lightblue;
+            /* Modifier style */
+            border: 2px solid blue;
+            /* Modifier style */
+        }
+        
+        .paragraph--emphasized {
+            font-style: italic;
+            /* Modifier style */
+        }
+        
+        .paragraph__detail {
+            color: #666;
+            /* Element level style */
+        }
+        
+        .paragraph--important .paragraph__detail {
+            color: red;
+            /* Modifier affecting an element */
+            font-weight: bold;
+            /* Modifier affecting an element */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="paragraph paragraph--highlighted">
+        <p class="paragraph__intro">Introduction</p>
+        <p class="paragraph__detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <div class="paragraph paragraph--emphasized">
+        <p class="paragraph__intro">Emphasized Section</p>
+        <p class="paragraph__detail">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+
+    <div class="paragraph paragraph--important">
+        <p class="paragraph__intro">Important Note</p>
+        <p class="paragraph__detail">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    </div>
+
+    <div class="paragraph">
+        <p class="paragraph__intro">Conclusion</p>
+        <p class="paragraph__detail">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+</body>
+
+</html>
